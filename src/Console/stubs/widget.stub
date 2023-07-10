@@ -1,0 +1,25 @@
+<?php
+
+namespace {{ namespace }};
+
+use Flexi\Widgets\Widget;
+
+class {{ class }} extends Widget
+{
+    /**
+     * Resolve the widget data.
+     */
+    public function resolve($resource)
+    {
+    }
+
+    /**
+     * Get the evaluated contents of the widget.
+     *
+     * @return string
+     */
+    public function render()
+    {
+        return "Wdiget: {$this->name}";
+    }
+}

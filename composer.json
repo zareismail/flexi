@@ -1,0 +1,45 @@
+{
+    "name": "zareismail/flexi",
+    "description": "A Modular Laravel Solution with Unmatched Flexibility.",
+    "keywords": [
+        "laravel",
+        "flexi"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.13",
+        "spatie/once": "^3.1",
+        "symfony/finder": "^6.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.5",
+        "pestphp/pest": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flexi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Flexi\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Flexi\\ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version": "1.0.0"
+}

@@ -1,0 +1,31 @@
+<?php
+
+namespace {{ namespace }};
+
+use Flexi\Http\Requests\FlexiRequest;
+use Flexi\Resource;
+use Flexi\Widgets\Html;
+use Illuminate\Http\Request;
+
+class {{ class }} extends Resource
+{
+    /**
+     * Resolve the resource for incoming request.
+     */
+    public function resolve(FlexiRequest $request)
+    {
+
+    }
+
+    /**
+     * Get the widgets available on the entity.
+     *
+     * @return array
+     */
+    public function widgets(Request $request)
+    {
+        return [
+            Html::make(static::uriKey())->content('Welcome to the ' . static::uriKey())
+        ];
+    }
+}
