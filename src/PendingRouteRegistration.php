@@ -66,6 +66,7 @@ class PendingRouteRegistration
             ->each(function ($resources, $group) {
                 Route::prefix($group)->group(function ($router) use ($resources) {
                     collect($resources)
+                        ->reject(fn ($resource) => $resource === Flexi::fallbackResource())
                         ->sortBy(fn ($resource) => intval($resource::wildcard()) - intval($resource::bounded()))
                         ->each(function ($resource) use ($router) {
                             $path = '/';
@@ -82,6 +83,10 @@ class PendingRouteRegistration
                         });
                 });
             });
+        // handle fallbacks
+        if ($fallbackResource = Flexi::fallbackResource()) {
+            Route::fallback([ResourceController::class, 'handle'])->name($fallbackResource::uriKey());
+        }
     }
 
     /**

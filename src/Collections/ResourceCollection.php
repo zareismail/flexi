@@ -15,11 +15,11 @@ class ResourceCollection extends Collection
     }
 
     /**
-     * Find first wildcard resource in the collection.
+     * Find first fallback resource in the collection.
      */
-    public function wildcard(): ?string
+    public function fallback(): ?string
     {
-        return $this->first(fn ($resource) => $resource::wildcard());
+        return $this->first(fn ($resource) => $resource::fallback());
     }
 
     /**

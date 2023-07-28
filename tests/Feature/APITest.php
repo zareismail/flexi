@@ -3,14 +3,15 @@
 use Flexi\Events\ResourceMatched;
 use Flexi\Events\WidgetRendered;
 use Flexi\Flexi;
+use Flexi\Tests\Fixtures\Fallback;
 use Flexi\Tests\Fixtures\Grouped;
-use Flexi\Tests\Fixtures\GroupedWildcard;
 use Flexi\Tests\Fixtures\GroupedUnbounded;
 use Flexi\Tests\Fixtures\GroupedUnboundedWildcard;
+use Flexi\Tests\Fixtures\GroupedWildcard;
 use Flexi\Tests\Fixtures\Ungrouped;
-use Flexi\Tests\Fixtures\UngroupedWildcard;
 use Flexi\Tests\Fixtures\UngroupedUnbounded;
 use Flexi\Tests\Fixtures\UngroupedUnboundedWildcard;
+use Flexi\Tests\Fixtures\UngroupedWildcard;
 use Flexi\Tests\Fixtures\Widgetized;
 use Flexi\Tests\Fixtures\Widgets\TestWidget;
 use Illuminate\Support\Facades\Event;
@@ -100,4 +101,14 @@ it('renders widgets in the resources', function () {
     $this->get(Widgetized::uri())->assertStatus(200);
     Event::assertDispatched(ResourceMatched::class, fn ($event) => $event->resource->uriKey() === Widgetized::uriKey());
     Event::assertDispatched(WidgetRendered::class, fn ($event) => $event->widget instanceof TestWidget);
+});
+
+// test fallback resource
+it('find fallback resource', function () {
+    Event::fake();
+
+    Flexi::replaceResources([Fallback::class]);
+
+    $this->get(time())->assertStatus(200);
+    Event::assertDispatched(ResourceMatched::class, fn ($event) => $event->resource->uriKey() === Fallback::uriKey());
 });

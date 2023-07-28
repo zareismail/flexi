@@ -128,11 +128,11 @@ class Flexi
     }
 
     /**
-     * Get the wildcard resource class name.
+     * Get the fallback resource class name.
      */
-    public static function wildcardResource(): ?string
+    public static function fallbackResource(): ?string
     {
-        return static::resourceCollection()->wildcard();
+        return static::resourceCollection()->fallback();
     }
 
     /**

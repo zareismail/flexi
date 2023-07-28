@@ -39,6 +39,14 @@ abstract class Resource
     }
 
     /**
+     * Determine if the resource is a fallback resource.
+     */
+    public static function fallback(): bool
+    {
+        return false;
+    }
+
+    /**
      * Get the resource name.
      */
     public static function name(): string

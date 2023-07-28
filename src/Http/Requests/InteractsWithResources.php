@@ -57,7 +57,7 @@ trait InteractsWithResources
      */
     public function resource()
     {
-        return tap($this->matchedResource() ?? Flexi::wildcardResource(), function ($resource) {
+        return tap($this->matchedResource() ?? Flexi::fallbackResource(), function ($resource) {
             abort_if(is_null($resource), 404);
         });
     }
